@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.Background{
+    background-image: url({{ url_for('static', filename='background/menu.png') }});
+    position: absolute;
+    left:50%;
+    margin-left: -400px;
+    height: 600px;
+    width: 800px;}
+.Buttons{
+    position: relative;
+    width: 280px;
+    left: 20px;
+    top: 150px;
+}
+
+#Play{
+    background-image: url({{ url_for('static', filename='interfase/play_normal.png') }});
+    display: inline-block;
+    height: 99px;
+    width: 280px;
+    }
+#Play:hover {
+    background-image: url({{ url_for('static', filename='interfase/play_active.png') }});
+    }
+#Options{
+    background-image: url({{ url_for('static', filename='interfase/options_normal.png') }});
+    display: inline-block;
+    position: relative;
+    height: 99px;
+    width: 280px;
+    }
+#Options:hover {
+    background-image: url({{ url_for('static', filename='interfase/options_active.png') }});
+    }
+#Help{
+    background-image: url({{ url_for('static', filename='interfase/help_normal.png') }});
+    display: inline-block;
+    height: 99px;
+    width: 280px;
+    }
+#Help:hover {
+    background-image: url({{ url_for('static', filename='interfase/help_active.png') }});
+    }
+#OnOff{
+    background-image: url({% if sound_mode=='on' %}{{ url_for('static', filename='interfase/on.png') }}{% else %}{{ url_for('static', filename='interfase/off.png') }}{% endif %});
+    position: relative;
+    height: 35px;
+    width: 73px;
+    top: 32px;
+    left: 180px;
+    }
+    
+</style>
+</head>
+<body>
+<div class="Background">
+<div class="Buttons">
+<a href="play" id="Play"></a>
+<a href="menu?sound={% if sound_mode=='on' %}off{% else %}on{% endif %}" id="Options"><div id="OnOff"></div></a>
+<a href="help" id="Help"></a>
+</div>
+</div>
+<p align='center' style="position: relative;top: 616px">©2020 Дарья.Яндекс Лицей</p>
+</body>

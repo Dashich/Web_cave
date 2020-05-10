@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.Background{
+    background-image: url({{ room_id }});
+    position: absolute;
+    left:50%;
+    margin-left: -400px;
+    height: 600px;
+    width: 800px;}
+.Menu{
+    background-image: url({{ url_for('static', filename='interfase/menu_normal.png') }});
+    display: inline-block;
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    height: 54px;
+    width: 47px;
+}
+.Menu:hover{
+    background-image: url({{ url_for('static', filename='interfase/menu_active.png') }});
+}
+.Left{
+    background-image: url({{ url_for('static', filename='interfase/left_arrow_normal.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 644px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Left:hover{
+    background-image: url({{ url_for('static', filename='interfase/left_arrow_active.png') }});
+}
+.LeftDis{background-image: url({{ url_for('static', filename='interfase/left_arrow_disable.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 644px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Right{
+    background-image: url({{ url_for('static', filename='interfase/right_arrow_normal.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 748px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Right:hover{
+    background-image: url({{ url_for('static', filename='interfase/right_arrow_active.png') }});
+}
+.RightDis{
+    background-image: url({{ url_for('static', filename='interfase/right_arrow_disable.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 748px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Up{
+    background-image: url({{ url_for('static', filename='interfase/up_arrow_normal.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 696px;
+    top: 482px;
+    width: 47px;
+    height: 54px;
+}
+.Up:hover{
+    background-image: url({{ url_for('static', filename='interfase/up_arrow_active.png') }});
+}
+.UpDis{
+    background-image: url({{ url_for('static', filename='interfase/up_arrow_disable.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 696px;
+    top: 482px;
+    width: 47px;
+    height: 54px;
+}
+.Down{
+    background-image: url({{ url_for('static', filename='interfase/down_arrow_normal.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 696px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Down:hover{
+    background-image: url({{ url_for('static', filename='interfase/down_arrow_active.png') }});
+}
+.DownDis{
+    background-image: url({{ url_for('static', filename='interfase/down_arrow_disable.png') }});
+    position: absolute;
+    display: inline-block;
+    left: 696px;
+    top: 541px;
+    width: 47px;
+    height: 54px;
+}
+.Text{
+    background-image: url({{ url_for('static', filename='interfase/text_box.png')}});
+    position: absolute;
+    left: 5px;
+    top: 489px;
+    width: 620px;
+    height: 90px;
+    padding: 7px;
+	color: #000000; 
+	text-decoration: none
+}
+</style>
+</head>
+<body>
+{% if sound %}
+	<audio src="{{url_for('static', filename='sounds/sound.ogg')}}" autoplay='True' loop='True'></audio>
+{% endif %}
+<div class="Background">
+<a class="Menu" href="menu"></a>
+{% if is_left %}
+	<a class="Left" href="play?move=left"></a>
+{% else %}
+	<div class="LeftDis"></div>
+{% endif %}
+{% if is_right %}
+	<a class="Right" href="play?move=right"></a>
+{% else %}
+	<div class="RightDis"></div>
+{% endif %}
+{% if is_up%}
+	<a class="Up" href="play?move=up"></a>
+{% else %}
+	<div class="UpDis"></div>
+{% endif %}
+{% if is_dowm %}
+	<a class="Down" href="play?move=down"></a>
+{% else %}
+	<div class="DownDis"></div>
+{% endif %}
+{% if moretext %}
+	<a href='play?step={{ step }}'
+{% else %}
+	<div 
+{% endif %}
+	class="Text">
+{{text}}
+{% if moretext %}
+	</a>
+{% else %}
+	</div>
+{% endif %}
+</div>
+<p align='center' style="position: relative;top: 616px">©2020 Дарья.Яндекс Лицей</p>
+</body>
